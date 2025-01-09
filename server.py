@@ -11,7 +11,6 @@ from flask_cors import CORS  # Import CORS to handle cross-origin requests
 import requests
 from waitress import serve  # Import Waitress for production server compatibility on Windows
 
-
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes to allow requests from different origins
@@ -56,6 +55,7 @@ def fetch_data():
     # Return the filtered and sorted data as a JSON response
     return jsonify(filtered_data)
 
+
 # Helper function to filter data based on the provided parameters
 def filter_data(data, start_date, end_date, min_revenue, max_revenue, min_net_income, max_net_income):
     filtered = []
@@ -74,8 +74,9 @@ def filter_data(data, start_date, end_date, min_revenue, max_revenue, min_net_in
         if max_net_income and item["netIncome"] > max_net_income:
             continue
         filtered.append(item)  # Add the item to the filtered list if all conditions are met
-    
+
     return filtered
+
 
 # Run the Flask app using Waitress for production compatibility on Windows
 if __name__ == "__main__":
